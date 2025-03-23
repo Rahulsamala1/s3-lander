@@ -1,0 +1,7 @@
+ezauth
+pyarrow
+google-cloud-bigquery
+boto3
+pandas
+pandas_gbq
+xmltodict
