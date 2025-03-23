@@ -18,7 +18,7 @@ This project automates the process of:
 - **Docker**: Packages the Python app along with dependencies.
 - **Amazon ECR**: Stores the Docker image.
 - **AWS Fargate**: Runs the container in a serverless environment.
-- **AWS Lambda**: Triggers the process when a new object is uploaded to an S3 bucket (optional).
+- **AWS Lambda**: Triggers the process when a new object is uploaded to an S3 bucket 
 - **S3**: Source of the data to be loaded into BigQuery.
 - **BigQuery**: Target destination for the data.
 
@@ -119,10 +119,10 @@ To deploy the Docker container to AWS Fargate, follow these steps:
 3. **Create or Update ECS Service**: Create a new ECS service or update an existing one to use the new task definition. Ensure that the service is set to use the Fargate launch type.
 4. **Deploy the service**: Once the ECS service is configured, AWS Fargate will automatically run your container without you having to manage EC2 instances.
 
-### 6. Lambda Function (Optional)
-If you want to trigger the process whenever new data is uploaded to an S3 bucket, you can create a Lambda function to handle the trigger and invoke the Fargate task.
+### 6. Lambda Function 
+To trigger the process whenever new data is uploaded to an S3 bucket, you can create a Lambda function to handle the trigger and invoke the Fargate task.
 
-#### Example Lambda Trigger Code (Optional)
+#### Example Lambda Trigger Code 
 ```python
 import boto3
 
