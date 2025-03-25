@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Node.js  # Ensures metadata fetching for GitHub Actions
+        uses: actions/setup-node@v18
+
       - name: Build Docker image
         run: docker build -t my-image:latest .
 
@@ -22,13 +25,8 @@ jobs:
       - name: Move Docker tar to repo folder
         run: mkdir -p docker_artifacts && mv docker-image.tar docker_artifacts/
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v18
-
-
       - name: Upload Docker image as artifact
-        uses: actions/upload-artifact@v3.1.2
-
+        uses: actions/upload-artifact@v3.1.2  # Fixed version
         with:
           name: docker-image
           path: docker_artifacts/docker-image.tar
