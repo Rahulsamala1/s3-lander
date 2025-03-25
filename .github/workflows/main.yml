@@ -1,0 +1,29 @@
+name: Build and Save Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Runs when code is pushed to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t my-image:latest .
+
+      - name: Save Docker image as tar file
+        run: docker save -o docker-image.tar my-image:latest
+
+      - name: Move Docker tar to repo folder
+        run: mkdir -p docker_artifacts && mv docker-image.tar docker_artifacts/
+
+      - name: Upload Docker image as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image
+          path: docker_artifacts/docker-image.tar
