@@ -23,7 +23,8 @@ jobs:
         run: mkdir -p docker_artifacts && mv docker-image.tar docker_artifacts/
 
       - name: Upload Docker image as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
+
         with:
           name: docker-image
           path: docker_artifacts/docker-image.tar
